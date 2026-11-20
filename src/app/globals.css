@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-y: #ffc800;
+  --color-y2: #ffd84a;
+  --color-ydeep: #8a6a00;
+  --color-k: #0a0a09;
+  --color-g: #161614;
+  --color-g2: #232320;
+  --color-red: #e10600;
+  --color-paper: #f5f2e9;
+  --color-paper2: #e9e4d4;
+  --font-display: var(--f-display), "Arial Narrow", sans-serif;
+  --font-sans: var(--f-body), system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-io: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+:root {
+  /* El ángulo del rayo del logo: lo repite todo el sitio. */
+  --bolt-cut: polygon(26% 0, 100% 0, 100% 100%, 6% 100%, 22% 52%, 14% 52%);
+  --slant: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background: var(--color-k);
+}
+
+body {
+  background: var(--color-k);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Superficies del navegador que también pertenecen a la marca */
+::selection {
+  background: var(--color-y);
+  color: var(--color-k);
+}
+:focus-visible {
+  outline: 3px solid var(--color-y);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.on-y :focus-visible,
+.on-paper :focus-visible {
+  outline-color: var(--color-k);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-y) var(--color-g);
+}
+a {
+  text-underline-offset: 0.2em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.002em;
+  line-height: 0.88;
+  text-wrap: balance;
+}
+
+.bolt-cut {
+  clip-path: var(--bolt-cut);
+}
+.slant {
+  clip-path: var(--slant);
+}
+
+/* ---------- Apertura: el rayo enciende la página (una vez, < 1 s) ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--color-k);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  animation: intro-out 380ms 620ms var(--ease-out) forwards;
+}
+.intro svg {
+  width: min(34vw, 180px);
+  animation: intro-bolt 780ms var(--ease-out) forwards;
+}
+@keyframes intro-bolt {
+  0% { opacity: 0; transform: scale(0.88) skewX(-8deg); }
+  22% { opacity: 1; }
+  34% { opacity: 0.25; }
+  44% { opacity: 1; transform: scale(1) skewX(0); }
+  100% { opacity: 1; transform: scale(1.5); }
+}
+@keyframes intro-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* ---------- Entradas del hero ---------- */
+.rise {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: rise 700ms var(--ease-out) forwards;
+  animation-delay: calc(var(--d, 0) * 1ms + 700ms);
+}
+.wipe {
+  clip-path: inset(0 0 0 100%);
+  animation: wipe 900ms var(--ease-io) forwards;
+  animation-delay: calc(var(--d, 0) * 1ms + 700ms);
+}
+@keyframes rise {
+  to { opacity: 1; transform: none; }
+}
+@keyframes wipe {
+  to { clip-path: var(--bolt-cut); }
+}
+
+/* ---------- Marcas ---------- */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.outline-text {
+  -webkit-text-stroke: 2px var(--color-paper);
+  color: transparent;
+}
+
+/* ---------- Botones: respuesta táctil inmediata ---------- */
+.btn {
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 200ms ease,
+    color 200ms ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Hover solo con puntero fino (en táctil dispara falsos positivos) */
+@media (hover: hover) and (pointer: fine) {
+  .lift:hover .lift-img {
+    transform: scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .intro { display: none; }
+  .rise, .wipe {
+    animation: fade 250ms ease forwards;
+    animation-delay: 0ms;
+    transform: none;
+    clip-path: var(--bolt-cut);
+  }
+  .rise { clip-path: none; }
+  .marquee { animation: none; flex-wrap: wrap; width: auto; }
+  .marquee [aria-hidden="true"] { display: none; }
+  .btn:active { transform: none; }
+  @keyframes fade { to { opacity: 1; } }
+}
