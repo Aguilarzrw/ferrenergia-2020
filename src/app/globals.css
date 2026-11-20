@@ -64,8 +64,8 @@ a {
   font-family: var(--font-display);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.002em;
-  line-height: 0.88;
+  letter-spacing: 0.005em;
+  line-height: 1;
   text-wrap: balance;
 }
 

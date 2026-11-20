@@ -16,12 +16,12 @@ export function Hero() {
       <div className="relative z-20 mx-auto flex w-full max-w-[1400px] flex-col px-5 pb-8 pt-24 md:min-h-svh md:justify-center md:px-8 md:pb-16 md:pt-24">
         <h1
           id="hero-title"
-          className="font-display !leading-[0.94] text-[clamp(3.4rem,16vw,6.6rem)] md:text-[clamp(4rem,min(8.4vw,16svh),10.5rem)]"
+          className="font-display !leading-[1.02] text-[clamp(3.4rem,16vw,6.6rem)] md:text-[clamp(3.8rem,min(6.2vw,14svh),9rem)]"
         >
           <span className="rise block" style={d(0)}>Que tu</span>
           <span className="rise block" style={d(90)}>negocio</span>
           <span className="rise block" style={d(180)}>nunca se</span>
-          <span className="rise mt-1.5 block w-fit bg-k px-3 pb-1 pt-1.5 text-y md:px-5" style={d(270)}>
+          <span className="rise mt-3 block w-fit bg-k px-3 pb-1 pt-1.5 text-y md:mt-4 md:px-5" style={d(270)}>
             apague.
           </span>
         </h1>
@@ -70,7 +70,7 @@ export function Hero() {
       </div>
 
       {/* Rayo rojo en el quiebre */}
-      <Bolt className="pointer-events-none absolute right-5 top-[61svh] z-30 h-20 sm:top-[64svh] text-red drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)] md:right-auto md:top-[34%] md:left-[40.5%] md:h-[30svh]" />
+      <Bolt className="pointer-events-none absolute right-5 top-[61svh] z-30 h-20 sm:top-[64svh] text-red drop-shadow-[0_6px_10px_rgba(0,0,0,0.35)] md:right-auto md:top-[34%] md:left-[46%] md:h-[26svh]" />
     </section>
   );
 }

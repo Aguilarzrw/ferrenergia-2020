@@ -13,11 +13,13 @@ export function Servicios() {
     <section id="servicios" aria-labelledby="serv-title" className="bg-paper py-20 text-k md:py-32 on-paper">
       <div className="mx-auto grid max-w-[1400px] gap-12 px-5 md:grid-cols-12 md:gap-10 md:px-8">
         <Reveal className="md:sticky md:top-28 md:col-span-5 md:self-start">
-          <h2 id="serv-title" className="font-display text-[clamp(2.8rem,6.4vw,5.6rem)]">
-            Te lo vendemos. Te lo instalamos. <span className="bg-k px-2 text-y">Te respaldamos.</span>
+          <h2 id="serv-title" className="font-display text-[clamp(2.4rem,3.3vw,3.5rem)] leading-[1.08]">
+            <span className="block md:whitespace-nowrap">Te lo vendemos.</span>
+            <span className="block md:whitespace-nowrap">Te lo instalamos.</span>
+            <span className="mt-2 block w-fit bg-k px-3 pb-1 text-y">Te respaldamos.</span>
           </h2>
           <div className="mt-8 hidden max-w-[300px] md:block">
-            <div className="bolt-cut overflow-hidden bg-g">
+            <div className="overflow-hidden bg-g [clip-path:polygon(8%_0,100%_0,100%_100%,0_100%)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={img("camaguan.webp")}
@@ -31,7 +33,7 @@ export function Servicios() {
           </div>
         </Reveal>
 
-        <ul className="md:col-span-7">
+        <ul className="md:col-span-7 md:col-start-6">
           {servicios.map(({ t, d, Icon }, i) => (
             <Reveal as="li" key={t} delay={i * 0.08}>
               <div className="group relative flex items-start gap-5 border-t-4 border-k py-9 md:gap-8 md:py-12">

@@ -5,10 +5,10 @@ import { Reveal } from "./Reveal";
 export function Cta() {
   return (
     <section id="contacto" aria-labelledby="cta-title" className="relative overflow-hidden bg-k pb-28 pt-28 md:py-40">
-      <Bolt className="pointer-events-none absolute -right-6 top-6 h-[70%] rotate-6 text-red/90 md:right-[8%] md:h-[88%]" />
+      <Bolt className="pointer-events-none absolute -right-6 top-6 h-[70%] rotate-6 text-red/90 md:right-[6%] md:top-[12%] md:h-[76%]" />
       <div className="relative mx-auto max-w-[1400px] px-5 md:px-8">
         <Reveal>
-          <h2 id="cta-title" className="font-display max-w-[11ch] text-[clamp(3.6rem,11vw,10rem)] text-paper">
+          <h2 id="cta-title" className="font-display max-w-[9ch] !leading-[1.04] text-[clamp(3.4rem,8.6vw,8.2rem)] text-paper">
             ¿Qué <span className="text-y">equipo</span> necesitas?
           </h2>
         </Reveal>
